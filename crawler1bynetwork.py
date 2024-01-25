@@ -40,10 +40,6 @@ class crawler:
         x = json.loads(response.text)
         self.da = pd.DataFrame(pd.json_normalize(x))
         
-    def output_data(self):
-        self.new_data['NewModel'] = self.new_model
-        self.new_data['Date'] = self.date
-        self.df = pd.concat([self.da.reset_index(drop=True), self.new_data.reset_index(drop=True)], axis=1)
         
         
 def download_csv(begin_date, end_date, ALL = False):
