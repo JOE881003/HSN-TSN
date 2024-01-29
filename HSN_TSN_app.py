@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 import sys
 from crawler1bynetwork import download_csv
+
 sys.path = ['C:/Users/joe881003/Desktop/HSN TSN'] + sys.path
 
 window = tk.Tk()#建立一個空視窗
@@ -10,14 +11,15 @@ window.geometry('380x400')#視窗大小
 window.resizable(False, False)
 
 def bt_download():
-    if chks.get() == True:
+    if (chks.get() == True) & (date_text.get() != '') & (end_date_text.get() != ''):
         download_csv(begin_date = date_text.get(), end_date = end_date_text.get(), ALL = True)
         messagebox.showinfo("訊息", "下載成功")
-    elif chks.get() == False:
+    elif (chks.get() == False) & (date_text.get() != '') & (end_date_text.get() != ''):
         download_csv(begin_date = date_text.get(), end_date = end_date_text.get(), ALL = False)
         messagebox.showinfo("訊息", "下載成功")
     else:
-        messagebox.showinfo("訊息", "下載失敗")
+        messagebox.showinfo("訊息", "下載失敗，請輸入正確日期!")
+
 
 date_label = tk.Label(window, text = '起始日期:', height=4)#起始日期label及位置
 date_label.place(x = 0, y = 83)
